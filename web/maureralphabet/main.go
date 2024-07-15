@@ -26,11 +26,15 @@ func index(c *gin.Context) {
 	text, _ := c.GetQuery("text")
 	plot_size_str, _ := c.GetQuery("plot_pixel")
 	lw_str, _ := c.GetQuery("line_pixel")
+	padding_str, _ := c.GetQuery("padding")
+	stride_str, _ := c.GetQuery("stride")
 
 	text = strings.ReplaceAll(text, "\r\n", "\n")
 
 	plot_size, _ := strconv.Atoi(plot_size_str)
 	lw, _ := strconv.Atoi(lw_str)
+	padding, _ := strconv.Atoi(padding_str)
+	stride, _ := strconv.Atoi(stride_str)
 
 	if plot_size <= 0 || lw <= 0 {
 		c.HTML(http.StatusOK, "index.html", gin.H{
@@ -56,8 +60,8 @@ func index(c *gin.Context) {
 	}
 
 	im := maureralphabet.ImageBuchstaben(buchstaben, maureralphabet.ImageOptions{
-		Padding:    12,
-		Stride:     10,
+		Padding:    padding,
+		Stride:     stride,
 		Wordlength: max,
 		Lines:      len(strings.Split(text, "\n")),
 		PixSize:    lw,
