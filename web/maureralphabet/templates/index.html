@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freimauere-Alphabet Encoder</title>
+</head>
+<body>
+    {{ if .msg }}
+    <div>
+        {{ if .img }}
+        <img src="data:image/png;base64, {{ .img }}" alt="none">
+        {{ end }}
+        <br>
+        <span>{{ .msg }}</span>
+    </div>
+    {{ end }}
+    <br>
+    <form action="/" method="GET">
+        <table>
+            <tr>
+                <td>
+                    <label for="plot_pixel">Pixel für ein Zeichen (quadratisch):</label>
+                </td>
+                <td>
+                    <input type="number" name="plot_pixel" value="64" \><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Linienstärke: </label>
+                </td>
+                <td>
+                    <input name="line_pixel" type="number" value="6" \><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="text">Text: </label>
+                </td>
+                <td>
+                    <textarea style="width: 500px;" name="text" placeholder="Hier Text eingeben der codiert werden soll"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><button type="submit">Zeige Code</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

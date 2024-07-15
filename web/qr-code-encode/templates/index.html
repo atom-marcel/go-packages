@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-Code Encoder</title>
+</head>
+<body>
+    {{ if .qr }}
+    <img src="data:image/png;base64, {{ .qr }}">
+    <br>
+    <span>{{ .msg }}</span>
+    <br>
+    <br>
+    {{ end }}
+
+    <form action="/" name="f" method="GET">
+        <input maxLength="1024" size="70" name="msg" value="" title="Text to QR Encode">
+        <input type="submit" value="Show QR-Code">
+    </form>
+</body>
+</html>
